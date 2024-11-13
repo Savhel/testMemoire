@@ -1,0 +1,7 @@
+# ninja log v6
+1117	1317	7517919428621899	testMemoire.exe	c6b44349362e0870
+28	1117	7517919417728343	CMakeFiles/testMemoire.dir/main.cpp.obj	dac2f79ccc92b70c
+5	1040	7517919417496659	CMakeFiles/testMemoire.dir/mainFCFS.cpp.obj	8e6c9194ce6d9d8f
+15	92	7517186315062890	CMakeFiles/testMemoire.dir/test.cpp.obj	90600622b2297736
+12	1084	7517919417571487	CMakeFiles/testMemoire.dir/mainSJF.cpp.obj	e5955f7430fb1e5a
+19	1095	7517919417647535	CMakeFiles/testMemoire.dir/mainRR.cpp.obj	1d88ee5e52c8033a
