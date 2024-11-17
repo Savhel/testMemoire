@@ -11,14 +11,14 @@
 #include "Processor.h"
 #include "usualFunction.h"
 
-bool comparePriorityMemoryTimeRR(const MemoryBlock& a, const MemoryBlock& b) {
-    return a.process.priority < b.process.priority;
+bool comparePriorityMemoryTimeRRP(const MemoryBlock& a, const MemoryBlock& b) {
+    return a.process.priority > b.process.priority;
 }
-bool compareArrivalTimeRR(const Process& a, const Process& b) {
+bool compareARRPivalTimeRRP(const Process& a, const Process& b) {
     return a.arrivalTime < b.arrivalTime;
 }
 
-int mainRR() {
+int main() {
     srand(0);
     std::vector<Process> processList = {{1, 3, 0, 4}, {2, 5, 0, 2}, {3, 2, 1, 6}};
     for (auto& process : processList) process.remainingTime = process.burstTime;
@@ -30,7 +30,7 @@ int mainRR() {
 
     int time = 0;
     bool allProcessesComplete = false;
-    std::sort(processList.begin(), processList.end(), compareArrivalTimeRR);
+    std::sort(processList.begin(), processList.end(), compareARRPivalTimeRRP);
     usualFunction::printProcesses(processList);
     int quantum = 2;
     int timeQuantum = 0;
@@ -85,14 +85,16 @@ int mainRR() {
                 break;
             }
         }
-        std::sort(memory.begin() + ind, memory.end(), comparePriorityMemoryTimeRR);
+        std::sort(memory.begin() + ind, memory.end(), comparePriorityMemoryTimeRRP);
 
-        if (time % quantum == 0 || processor.free || timeQuantum == 0) {
+        if (time % quantum == 0 || processor.free || timeQuantum == 0 || memory[0].process.pid != processor.process->pid) {
             // timeQuantum++;
             if (processor.free) {
                 timeQuantum = 0;
             }
-            usualFunction::rotateProcessesMemory(memory);
+            if(memory[0].process.priority == memory[1].process.priority) {
+                usualFunction::rotateProcessesMemory(memory);
+            }
             if (memory[0].process.pid != 0) {
                 processor.free = false;
                 processor.process = &memory[0].process;

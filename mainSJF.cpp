@@ -18,7 +18,7 @@ bool compareArrivalTimeSJFSJF(const Process& a, const Process& b) {
     return a.arrivalTime < b.arrivalTime;
 }
 
-int main() {
+int mainSJF() {
     std::vector<Process> processList = {{1, 3, 0, 4}, {2, 5, 0, 2}, {3, 2, 1, 6}};
     for (auto& process : processList) process.remainingTime = process.burstTime;
 
